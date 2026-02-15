@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Blood red cardiovascular theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    /* Primary - Deep Crimson Blood Red */
+    --primary: 0 72% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Lighter red for secondary */
+    --secondary: 0 60% 96%;
+    --secondary-foreground: 0 72% 35%;
+
+    --muted: 0 10% 96%;
+    --muted-foreground: 0 5% 45%;
+
+    /* Accent - Rose tint */
+    --accent: 0 60% 94%;
+    --accent-foreground: 0 72% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 20% 90%;
+    --input: 0 20% 90%;
+    --ring: 0 72% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --heart-red: 0 72% 45%;
+    --heart-red-light: 0 65% 55%;
+    --heart-red-dark: 0 75% 35%;
+    --heart-glow: 0 80% 60%;
+    
+    /* Gradients */
+    --gradient-heart: linear-gradient(135deg, hsl(0, 72%, 50%), hsl(0, 75%, 35%));
+    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(0, 40%, 98%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(0, 30%, 98%));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(0 72% 45% / 0.15);
+    --shadow-glow: 0 0 40px hsl(0 72% 50% / 0.3);
+    --shadow-card: 0 10px 40px -10px hsl(0 30% 20% / 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 5% 26%;
+    --sidebar-primary: 0 72% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 40% 96%;
+    --sidebar-accent-foreground: 0 72% 40%;
+    --sidebar-border: 0 20% 91%;
+    --sidebar-ring: 0 72% 50%;
+  }
+
+  .dark {
+    --background: 0 10% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 10% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 10% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 72% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 30% 15%;
+    --secondary-foreground: 0 60% 80%;
+
+    --muted: 0 15% 15%;
+    --muted-foreground: 0 10% 65%;
+
+    --accent: 0 30% 15%;
+    --accent-foreground: 0 60% 80%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 20% 18%;
+    --input: 0 20% 18%;
+    --ring: 0 72% 55%;
+
+    --heart-red: 0 72% 55%;
+    --heart-red-light: 0 65% 65%;
+    --heart-red-dark: 0 75% 45%;
+    
+    --sidebar-background: 0 10% 8%;
+    --sidebar-foreground: 0 5% 90%;
+    --sidebar-primary: 0 72% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 20% 15%;
+    --sidebar-accent-foreground: 0 60% 80%;
+    --sidebar-border: 0 15% 18%;
+    --sidebar-ring: 0 72% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+@layer components {
+  /* Heartbeat animation */
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    15% {
+      transform: scale(1.15);
+    }
+    30% {
+      transform: scale(1);
+    }
+    45% {
+      transform: scale(1.1);
+    }
+    60% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(0 72% 50% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(0 72% 50% / 0.5);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-scale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 1.2s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-scale {
+    animation: fade-in-scale 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.5s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Staggered animations */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-lg;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(0, 72%, 50%), hsl(0, 75%, 35%));
+  }
+
+  /* Heart container */
+  .heart-container {
+    @apply fixed inset-0 pointer-events-none z-50 flex items-center justify-center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .heart-container.visible {
+    opacity: 1;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
